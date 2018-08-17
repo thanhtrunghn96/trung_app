@@ -1,0 +1,11 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-offset-3 col-lg-6">
+			<div class="text-left">
+				<label><%= @user.name %></label>
+			</div>
+			<%= link_to "Logout", logout_path, method: :delete %> |
+			<%= link_to "Update my information" ,users_update_path, method: :get %> 
+		</div>
+	</div>
+</div>

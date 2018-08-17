@@ -1,0 +1,36 @@
+<div class="container">
+	<div class="row">
+		<h1>Your Cart</h1>
+		<%= link_to 'Continue to buy', products_path, class: "btn btn-success", style: "margin-bottom: 10px"%>
+	</br>
+	<table class=" table table-bordered table-hover" style="text-align:center">
+		<tr>
+			<th>Product</th>
+			<th>Quantity</th>
+			<th>Price</th>
+			<th>Remove</th>
+		</tr>
+		<% @cart.orders.each do |orders| %>
+		<tr>
+			<td>
+				<p><%= orders.product.name%></p>
+				<%= image_tag orders.product.image_link_url, width:"100px", height:"100px"%>
+			</td>
+			<td><%= orders.quantity %></td>
+			<td><%= number_to_currency(orders.total_price)%></td>
+			<td><%= button_to 'Remove Order',  order_path(orders),class: "btn btn-default",
+			method: :delete,
+			data: { confirm: 'Are you sure?' }%></td>
+		</tr>
+		<% end %>
+		<tr>
+			<td colspan="2">Total</td>
+			<td colspan="2"><%= number_to_currency(@cart.total_price) %></td>
+		</tr> 
+	</table>
+	<center>
+		<%= button_to 'Empty Cart', @cart, class: "btn btn-default", style: "float: right",:method => :delete,data: {:confirm => 'Are you sure?'} %>
+		<%= button_to 'Check Out', @cart, class: "btn btn-info", style: "float: right; margin-right: 16px",:method => :delete, data: {:confirm => 'Are you sure?'} %>
+	</center>
+ </div>
+</div>

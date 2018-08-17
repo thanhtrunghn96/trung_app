@@ -1,0 +1,10 @@
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - db/migrate/*
+Metrics/LineLength:
+  Max: 120
+Metrics/MethodLength:
+  Max: 25
+Documentation:
+  Enabled: false

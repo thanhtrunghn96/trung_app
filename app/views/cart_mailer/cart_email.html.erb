@@ -1,0 +1,25 @@
+<div class="row">
+	<h1>Your cart</h1>
+	<%= link_to 'Continue to buy', products_path, class: "btn btn-success", style: "margin-bottom: 10px"%>
+</br>
+<table class=" table table-bordered table-hover" style="text-align:center">
+	<tr>
+		<th>Product</th>
+		<th>Quantity</th>
+		<th>Price</th>
+	</tr>
+	<% @cart.orders.each do |orders| %>
+	<tr>
+		<td>
+			<p><%= orders.product.name%></p>
+			<%= image_tag orders.product.image_link_url, width:"100px", height:"100px"%>
+		</td>
+		<td><%= orders.quantity %></td>
+		<td><%= number_to_currency(orders.total_price)%></td>
+	</tr>
+	<% end %>
+	<tr>
+		<td colspan="2">Total</td>
+		<td colspan="2"><%= number_to_currency(@cart.total_price) %></td>
+	</tr> 
+</table>
