@@ -1,0 +1,26 @@
+<%= render "shared/header" %>
+<div class="container">
+	<div class="row">
+		<h1>Your Check Out</h1>
+		<table class="table table-striped" style="">
+			<thead>
+				<tr>
+					<th scope="col"><%= t ".name"%></th>
+					<th scope="col"><%= t ".quantity"%> </th>
+					<th scope="col"><%= t ".price"%></th>
+				</tr>
+			</thead>
+			<tbody>
+		<% @cart.orders.each do |orders| %>
+				<tr>
+					<td><%= orders.product.name%></td>
+					<td><%= orders.quantity%></td>
+					<td><%=number_to_currency(orders.total_price)%></td>
+				</tr>
+		<% end %>
+			</tbody>
+		</table>
+		<center><p>Total: <strong><%=number_to_currency(@cart.total_price)%></strong></p></center>
+	</div>
+</div>
+<%= render "shared/footer" %>

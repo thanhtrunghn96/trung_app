@@ -2,7 +2,7 @@
 
 class Cart < ApplicationRecord
   has_many :orders, dependent: :destroy # khi card bi huy thi order bi huy theo
-  # belongs_to :user
+  belongs_to :user
   before_destroy :check_if_has_order
   enum status: %i[active notactive]
   # Dynamic Finders
@@ -20,14 +20,7 @@ class Cart < ApplicationRecord
     orders.to_a.sum(&:total_price) # to_a chuyen doi tuong sang 1 mang
   end
 
-  private
-
-  def check_if_has_order
-    if orders.empty?
-      true
-    else
-      errors.add(:base, 'This product has a Order')
-      false
-    end
+  def check_if_has_order?
+    orders.empty?
   end
 end

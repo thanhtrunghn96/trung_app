@@ -11,6 +11,8 @@ class ImageLinkUploader < CarrierWave::Uploader::Base
   def extension_white_list
     %w[jpg jpeg gif png]
   end
+  include CarrierWave::MiniMagick
+  process resize_to_limit: [300, 300]
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:

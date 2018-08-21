@@ -11,6 +11,10 @@ class Product < ApplicationRecord
   validates :image_link, presence: true
   validates :category_id, presence: true, numericality: { only_integer: true }
 
+  def picture_size
+    errors.add(:image_link, t('image_size')) if image_link.size > 5.megabytes
+  end
+
   def self.order_list(sort_order)
     if sort_order == 'newest' || sort_order.blank?
       order(created_at: :desc)

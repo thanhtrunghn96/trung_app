@@ -29,25 +29,18 @@ RSpec.describe User, type: :model do
       user.email = nil
       expect(user).to_not be_valid
     end
-    context 'should validate name uniqueness' do
-      let(:user1) { FactoryBot.build(:user, name: 'trung') }
-      it do
-        user1.valid?
-        expect(category1.errors.full_messages).to include 'Name has already been taken'
-      end
-    end
     context 'should validate phone uniqueness' do
       let(:user2) { FactoryBot.build(:user, email: 'abc@gmail.com') }
       it do
         user2.valid?
-        expect(category1.errors.full_messages).to include 'Email has already been taken'
+        expect(user2.errors.full_messages).to include 'Email has already been taken'
       end
     end
     context 'should validate phone uniqueness' do
-      let(:user3) { FactoryBot.build(:category, name: '092173') }
+      let(:user3) { FactoryBot.build(:user, phone: '092173') }
       it do
         user3.valid?
-        expect(category1.errors.full_messages).to include 'Phone has already been taken'
+        expect(user3.errors.full_messages).to include 'Phone has already been taken'
       end
     end
   end

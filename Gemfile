@@ -11,12 +11,18 @@ gem 'rails', '~> 5.2.0'
 gem 'carrierwave', '~> 1.0'
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 # protect password
+gem 'activeadmin'
 gem 'bcrypt'
 gem 'bootstrap-sass', '~> 3.3.7'
+gem 'cancan' # or cancancan
 gem 'devise'
+gem 'devise-i18n'
+gem 'draper'
 gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
 gem 'haml-rails', '~> 1.0'
 gem 'jquery-rails'
+gem 'mini_magick'
+gem 'pundit'
 gem 'rails-controller-testing'
 gem 'sprockets-rails', require: 'sprockets/railtie'
 # debug
