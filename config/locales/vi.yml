@@ -2,33 +2,7 @@ vi:
   time:
     formats:
       long: "%Y-%m-%d %H:%M:%S"
-  orders:
-    index:
-      name: "Ten"
-      quantity: "So luong"
-      price: "Gia"
-  products:
-    index:
-      oldest: "Cu nhat"
-      newest: "Moi nhat"
-      name: "Ten"
-      price: "Gia"
-      category: "Hang san xuat"
-      avatar: "Anh dai dien"
-      show: "Chi tiet"
-      edit: "Sua"
-      delete: "Xoa"
-      add to cart: "Them vao gio hang"
-      new product: "Them moi san pham"
-      search: "Tim kiem"
-    new:
-      new product: "Them moi san pham"
-      name: "Ten"
-      category: "Hang san xuat"
-      price: "Gia"
-      avatar: "Anh dai dien"
-      description: "Mo ta"
-  active_admin:
+  active_admin: 
     dashboard: Bảng điều khiển
     dashboard_welcome:
       welcome: "Chào mừng bạn đến với Active Admin. Đây là trang điều khiển mặc định."
@@ -160,3 +134,37 @@ vi:
       block: "Danh sách"
       grid: "Lưới"
       blog: "Blog"
+  orders:
+    index:
+      name: "Ten"
+      quantity: "So luong"
+      price: "Gia"
+  products:
+    index:
+      oldest: "Cu nhat"
+      newest: "Moi nhat"
+      name: "Ten"
+      price: "Gia"
+      category: "Hang san xuat"
+      avatar: "Anh dai dien"
+      show: "Chi tiet"
+      edit: "Sua"
+      delete: "Xoa"
+      add to cart: "Them vao gio hang"
+      new product: "Them moi san pham"
+      search: "Tim kiem"
+    new:
+      new product: "Them moi san pham"
+      name: "Ten"
+      category: "Hang san xuat"
+      price: "Gia"
+      avatar: "Anh dai dien"
+      description: "Mo ta"
+  categories:
+    index:
+      name: "Ten"
+      edit: "Sua"
+      delete: "Xoa"
+      search: "Tim kiem"
+      new category: "Them hang san xuat"
+

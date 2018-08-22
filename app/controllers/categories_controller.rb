@@ -4,7 +4,8 @@ class CategoriesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @category = Category.where('name LIKE ?', "%#{params[:search]}%").page params[:page]
+    @search = Category.ransack(params[:q])
+    @category = @search.result(distinct: true).page params[:page]
   end
 
   def new

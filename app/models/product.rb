@@ -14,19 +14,7 @@ class Product < ApplicationRecord
   def picture_size
     errors.add(:image_link, t('image_size')) if image_link.size > 5.megabytes
   end
-
-  def self.order_list(sort_order)
-    if sort_order == 'newest' || sort_order.blank?
-      order(created_at: :desc)
-    elsif sort_order == 'name'
-      order(name: :asc)
-    elsif sort_order == 'price'
-      order(price: :desc)
-    else
-      order(created_at: :asc)
-    end
-  end
-
+  
   private
 
   def check_if_has_order

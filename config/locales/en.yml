@@ -199,4 +199,11 @@ en:
       price: "Price"
       avatar: "Avarta"
       description: "Description"
+  categories:
+    index:
+      name: "Name"
+      edit: "Edit"
+      delete: "Delete"
+      search: "Search"
+      new category: "New Category"
 

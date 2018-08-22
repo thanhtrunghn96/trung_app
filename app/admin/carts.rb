@@ -5,7 +5,7 @@ ActiveAdmin.register Cart do
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
   # permit_params :list, :of, :attributes, :on, :model
-  show do |_order|
+  show do |order|
     panel 'Customer details' do
       attributes_table_for cart, :user, :totalprice, :status, :updated_at
     end
@@ -21,7 +21,9 @@ ActiveAdmin.register Cart do
         column 'Quantity', &:quantity
       end
     end
+  text_node link_to 'Download CSV', admin_carts_path(q: {id_eq: resource.id}, format: :csv)
   end
+
   #
   # permit_params do
   #   permitted = [:permitted, :attributes]

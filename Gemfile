@@ -25,6 +25,7 @@ gem 'mini_magick'
 gem 'pundit'
 gem 'rails-controller-testing'
 gem 'sprockets-rails', require: 'sprockets/railtie'
+gem 'ransack', github: 'activerecord-hackery/ransack'
 # debug
 gem 'pry'
 # pagination
