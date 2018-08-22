@@ -4,6 +4,7 @@ require 'rails_helper'
 
 RSpec.describe Order, type: :model do
   let(:category) { FactoryBot.create(:category) }
+  let(:cart) { FactoryBot.create(:cart) }
   let(:product) { FactoryBot.create(:product, category: category) }
   let(:order) { FactoryBot.create(:order, product: product) }
 

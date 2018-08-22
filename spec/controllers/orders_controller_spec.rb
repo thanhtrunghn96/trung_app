@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe OrdersController, type: :controller do
   let(:category) { FactoryBot.create(:category) }
   let(:product) { FactoryBot.create(:product, category: category) }
-  let(:order) { FactoryBot.create(:product) }
+  let(:order) { FactoryBot.create(:order, product: product) }
   describe 'TEST Orders' do
     it 'Redirect current cart after destroy' do
       @cart = order.cart_id

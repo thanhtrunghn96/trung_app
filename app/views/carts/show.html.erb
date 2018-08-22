@@ -30,7 +30,7 @@
 	</table>
 	<center>
 		<%= button_to 'Empty Cart', @cart, class: "btn btn-default", style: "float: right",:method => :delete,data: {:confirm => 'Are you sure?'} %>
-		<%= button_to 'Check Out', @cart, class: "btn btn-info", style: "float: right; margin-right: 16px",:method => :delete, data: {:confirm => 'Are you sure?'} %>
+		<%= button_to 'Check Out',cart_checkout_path(@cart), method: :post,class: "btn btn-info", style: "float: right; margin-right: 16px" %>
 	</center>
- </div>
+</div>
 </div>

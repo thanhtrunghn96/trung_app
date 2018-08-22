@@ -3,19 +3,16 @@
 class CartsController < ApplicationController
   before_action :authenticate_user!
   def index
-    # @carts = []
-    # if session[:cart_id] != nil
-    #   @carts << Cart.find_by_id(session[:cart_id])
-    # end
+    @cart = Cart.where(status: 'active').order(created_at: :desc)
   end
 
-  def check_out
-    # @cart = Cart.find_by params[id]
-    #   @cart.active! #change status
-    #   session.delete 'cart_id'
-
-    #   CartMailer.cart_email(@cart).deliver
-    #   redirect_to
+  def checkout
+    @cart = Cart.find_by(id: params[:id])
+    @cart.active! # change status
+    @cart.update_attribute(:totalprice, @cart.total_price)
+    session.delete 'cart_id'
+    CartMailer.cart_email(@cart).deliver
+    redirect_to products_path
   end
 
   def show
@@ -24,9 +21,9 @@ class CartsController < ApplicationController
   end
 
   def destroy
-    @cart = current_cart
-    @cart.destroy
-    session[:cart_id] = nil
+    @cart = Cart.find_by(id: session['cart_id'])
+    @cart.orders.destroy
+    session.delete 'cart_id'
     redirect_to products_path
   end
 end

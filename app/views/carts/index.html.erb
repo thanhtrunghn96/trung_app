@@ -1,2 +1,29 @@
-<%= notice %>
-<h1>Listing Carts</h1>
+<%= render "shared/header" %>
+<div class="container">
+	<div class="row">
+		<h1>Your Check Out</h1>
+		<table class="table table-striped" style="">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Date time</th>
+					<th scope="col">Total Detail</th>
+					<th scope="col">Status</th>
+					<th scope="col">Detail</th>
+				</tr>
+			</thead>
+			<tbody>
+		<% @cart.each.with_index(1) do |cart, index| %>
+				<tr>
+					<td><%= index %></td>
+					<td><%= cart.updated_at%></td>
+					<td><%=number_to_currency(cart.totalprice)%></td>
+					<td><%= cart.status%></td>
+					<td><%= link_to 'Detail',detail_order_path(cart)%></td> 
+				</tr>
+			<% end %>
+			</tbody>
+	</table>
+	</div>
+</div>
+<%= render "shared/footer" %>

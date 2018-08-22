@@ -8,3 +8,5 @@ Metrics/MethodLength:
   Max: 25
 Documentation:
   Enabled: false
+Metrics/BlockLength: 
+  Enabled: false

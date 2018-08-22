@@ -1,27 +1,27 @@
 <div class="container">
- <div class="row">
-  <h1 class="title1">New Product</h1> 
-</div>
-<div class="col-lg-offset-3 col-lg-6">
+  <div class="row">
+    <h1 class="title1"><%= t ".new product"%></h1> 
+  </div>
+  <div class="col-lg-offset-3 col-lg-6">
   <%= form_for @product, html: {class: "form-horizontal"} do |f| %>
   <div class="form-group">
-    <%= f.label :name, "Name"%>
+    <%= f.label :name, t(".name")%>
     <%= f.text_field :name, class: "form-control", placeholder: "Enter product name"%>
   </div>
   <div class="form-group">
-    <%= f.label :category, "Category "%><br>
+    <%= f.label :category, t(".category")%><br>
     <%= f.collection_select :category_id, Category.all, :id, :name, class: "selectpicker"%>
   </div>
   <div class="form-group">
-    <%= f.label :price, "Price"%>
+    <%= f.label :price, t(".price")%>
     <%= f.text_field :price, class: "form-control", placeholder: "Enter price product" %>
   </div>
   <div class="form-group">
-    <%= f.label :content, "Description"%>
+    <%= f.label :content, t(".description")%>
     <%= f.text_area :content, class: "form-control", placeholder: "Write decripstion product", rows: "5" %>
   </div>
   <div class="form-group">
-    <%= f.label :image_link, "Avarta"%>
+    <%= f.label :image_link, t(".avatar")%>
     <%= f.file_field :image_link, accept:"image/*", onchange:"loadFile(event)"%>
     <img id="output" width="120px" height="120px" style="margin-top: 6px">
   </div>
@@ -32,7 +32,7 @@
     </div>
   </div>
   <% end %>
-</div>
+  </div>
 </div>
 <script>
   var loadFile = function(event) {
