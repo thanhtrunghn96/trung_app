@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   def index
     @cart = Cart.find_by(id: params[:id])
+    render 'shared/_404' if @cart.nil?
   end
 
   def show; end

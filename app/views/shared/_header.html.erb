@@ -1,21 +1,18 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<%= link_to "Home", class: "navbar-brand" %>
-		</div>
+<nav class="header">
+	<div class="container">
+		<%= link_to "ZinZa Project", products_path, class: "web-title" %>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
 				<% if user_signed_in? %>
+				<li><%= image_tag current_user.avatar_url, class:"rounded"%></li>
 				<li><%= link_to current_user.email, edit_user_registration_path %></li>
-				<li><%= link_to "All Order", carts_path %></li>
+				<li><%= link_to "List Cart", carts_path %></li>
 				<% else %>
 				<li><%= link_to "Log in", new_user_session_path %></li>
 				<%end%>
 				<li><%= link_to "Log out", destroy_user_session_path, method: 'delete'%></li>
 				<li><%= link_to "English", locale:"en" %></li>
 				<li><%= link_to "Vietnamese", locale:"vi" %></li>
-				<li><%= link_to "Product",  products_path %></li>
-				<li><%= link_to "Categories", categories_path %></li>
 			</ul>
 		</div>
 	</div>

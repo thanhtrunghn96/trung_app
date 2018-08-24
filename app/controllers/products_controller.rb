@@ -2,12 +2,10 @@
 
 class ProductsController < ApplicationController
   before_action :authenticate_user!
+
   def index
-    @product = if params[:search].nil?
-                 Product.all.order_list(params[:sort_by]).page params[:page]
-               else
-                 Product.where('name LIKE ?', "%#{params[:search]}%").page params[:page]
-               end
+    @search = Product.ransack(params[:q])
+    @products = @search.result.eager_load(:category).page params[:page]
   end
 
   def new

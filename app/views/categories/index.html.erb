@@ -2,15 +2,20 @@
 <div class="container">
   <div class="row">
     <h1 style="margin-top: 83px;">Categories</h1>
-    <%= link_to 'New Product', new_category_path, class: "btn btn-primary"%>
-    <%= render "shared/search" %>
+    <%= link_to t(".new category"), new_category_path, class: "btn btn-primary"%>
+    <div style="float: right;margin-bottom: 15px;">
+      <%= search_form_for @search do |f| %>    
+        <%= f.text_field :name_cont, placeholder: "Search..." %>
+        <%= f.submit t(".search") %>
+      <% end %>
+    </div>
     <table class="table table-striped">
       <thead>
         <tr>
           <th>#</th>
-          <th>Name</th>
-          <th>Edit</th>
-          <th>Delete</th>
+          <th><%= sort_link(@search, :name, t(".name"))%></th>
+          <th><%= t ".edit"%></th>
+          <th><%= t ".delete"%></th>
         </tr>
       </thead>
       <tbody>
@@ -18,16 +23,16 @@
         <tr>
           <td><%= index %></td>
           <td><%= category.name %></td>
-          <td><%= link_to 'Edit', edit_category_path(category) %></td>
-          <td><%= link_to 'Delete', category_path(category),
+          <td><%= link_to t(".edit"), edit_category_path(category) %></td>
+          <td><%= link_to t(".delete"), category_path(category),
           method: :delete,
           data: { confirm: 'Are you sure?' } %>
         </td>
       </tr>
       <% end %>
-    </tbody>
-  </table>
-  <div style="float:right;margin-right: 67px;"><%= paginate @category %></div>
-</div>
+      </tbody>
+    </table>
+    <div style="float:right;margin-right: 67px;"><%= paginate @category %></div>
+  </div>
 </div>
 <%= render "shared/footer" %>

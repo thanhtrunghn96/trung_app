@@ -5,7 +5,17 @@ ActiveAdmin.register Cart do
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
   # permit_params :list, :of, :attributes, :on, :model
-  show do |_order|
+  controller do |cart|
+    def show
+      cart = Cart.find_by(id: params[:id])
+      respond_to do |format|
+        format.html
+        format.csv { send_data cart.orders.to_csv,filename: "details-#{Date.today}.csv"}
+      end
+    end
+  end
+
+  show do |cart|
     panel 'Customer details' do
       attributes_table_for cart, :user, :totalprice, :status, :updated_at
     end
@@ -16,12 +26,14 @@ ActiveAdmin.register Cart do
           f.product.name
         end
         column 'Price' do |f|
-          f.product.price
+          number_to_currency f.product.price
         end
         column 'Quantity', &:quantity
       end
     end
+    text_node link_to('Download CSV', admin_cart_path(resource.id, format: :csv))
   end
+
   #
   # permit_params do
   #   permitted = [:permitted, :attributes]
