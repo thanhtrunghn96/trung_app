@@ -8,12 +8,16 @@ ActiveAdmin.register Product do
     selectable_column
     column :id
     column 'Category' do |product|
-      product.category.present? ? product.category.name : content_tag(:span, "no category yet")
+      product.category.present? ? product.category.name : content_tag(:span, 'no category yet')
     end
     column :name
-    column :price
-    column :image_link
-    #column(:image_link){|product| image_tag product.image_link}
+    column :price do |product|
+      number_to_currency product.price
+    end
+    # column :image_link
+     column :image_link do |ad|
+      image_tag ad.image_link.url, class: 'image_link_index'
+     end
     column :content
     column :created_at
     column :updated_at
@@ -24,9 +28,11 @@ ActiveAdmin.register Product do
     attributes_table do
       row :category
       row :name
-      row :price
+      row :price do |product|
+        number_to_currency product.price
+      end
       row :image_link do |ad|
-        image_tag ad.image_link.url
+        image_tag ad.image_link.url,  class: 'image_link_view'
       end
       row :content
       row :created_at

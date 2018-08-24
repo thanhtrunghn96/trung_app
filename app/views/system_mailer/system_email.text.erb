@@ -1,0 +1,14 @@
+<center><h1>System Trung_app</h1></center>
+ <% if @revenue %> 
+ <% totalprice = 0%>
+ <% @revenue.each do |a|%>
+    <%= a.user.name %>
+    <%= a.totalprice %>
+    <% totalprice += a.totalprice %>
+    <% end %>
+    Today reveneu is:<%= totalprice%>
+ <% else%> 
+  Today no one order your in Your Website  
+<% end %> 
+     
+ 

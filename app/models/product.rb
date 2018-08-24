@@ -14,7 +14,7 @@ class Product < ApplicationRecord
   def picture_size
     errors.add(:image_link, t('image_size')) if image_link.size > 5.megabytes
   end
-  
+
   private
 
   def check_if_has_order

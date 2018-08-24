@@ -24,8 +24,10 @@ gem 'jquery-rails'
 gem 'mini_magick'
 gem 'pundit'
 gem 'rails-controller-testing'
-gem 'sprockets-rails', require: 'sprockets/railtie'
 gem 'ransack', github: 'activerecord-hackery/ransack'
+gem 'sprockets-rails', require: 'sprockets/railtie'
+gem 'whenever', require: false
+gem "font-awesome-rails"
 # debug
 gem 'pry'
 # pagination
