@@ -1,21 +1,25 @@
-<div class="container">
-	<div class="row">
-		<div class="col-md-6 col-sm-12">
-			<%= image_tag "#{@product.image_link}", width:"490px", height:"490px" %>
-		</div>
-		<div class="col-md-6 col-sm-12">
-			<h1 class="deal_detail_name"><%=@product.name%></h1>
-			<h2 class="deal_detail_name_long"><%=@product.content%></h2>
-			<br>
-			<span id="price" class="detail_price"><%=number_to_currency(@product.price)%></span>
-			<div class="form-group">
-				<div class="col-lg-offset-10">
-					<%= form_for Order.new do |order|%>
-					<%= order.hidden_field :product_id, value: @product.id %>
-					<%= order.submit 'Add to Cart', class: "btn btn-primary" %> 
-					<%= order.number_field :quantity, style: "width: 92px; height: 33px; margin-top: 9px;margin-left: 4px; text-align: center", value: 1, min: 1, class: "form-control" %>
-					<% end %> 
-				</div>
+<div class="row" style ="margin-top: 124px;">
+	<div class="col-md-6 col-sm-12">
+		<%= image_tag "#{@product.image_link}", width:"450px", height:"300px" %>
+	</div>
+	<div class="col-md-6 col-sm-12">
+		<h1 class="deal_detail_name"><%=@product.name%></h1>
+		<h2 class="deal_detail_name_long"><%=@product.content%></h2>
+		<br>
+		<span id="price" class="detail_price"><%=number_to_currency(@product.price)%></span>
+		<div class="form-group">
+			<div class="col-lg-offset-10">
+				<%= form_for Order.new do |order|%>
+				<%= order.hidden_field :product_id, value: @product.id %>
+				<%= order.hidden_field :product_name, value: @product.name%>
+				<%= order.hidden_field :product_price, value: @product.price%>
+				<% if current_user.id == @check_user %>
+        <%= order.submit 'Add to Cart', class: "btn btn-primary disabled",:disabled => true %>
+				<% else %>
+				<%= order.submit 'Add to Cart', class: "btn btn-primary" %> 
+				<% end%>
+				<%= order.number_field :quantity, style: "width: 92px; height: 33px; margin-top: 9px;margin-left: 4px; text-align: center", value: 1, min: 1, class: "form-control" %>
+				<% end %> 
 			</div>
 		</div>
 	</div>

@@ -1,26 +1,31 @@
-<%= render "shared/header" %>
-<div class="container">
-	<div class="row">
-		<h1>Your Check Out</h1>
-		<table class="table table-striped" style="">
-			<thead>
-				<tr>
-					<th scope="col"><%= t ".name"%></th>
-					<th scope="col"><%= t ".quantity"%> </th>
-					<th scope="col"><%= t ".price"%></th>
-				</tr>
-			</thead>
-			<tbody>
-		<% @cart.orders.each do |orders| %>
-				<tr>
-					<td><%= orders.product.name%></td>
-					<td><%= orders.quantity%></td>
-					<td><%=number_to_currency(orders.total_price)%></td>
-				</tr>
+<div class="row"style ="margin-top: 124px;">
+	<h1><%= t ".detail order"%></h1>
+	<table class="table table-striped" style="">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col"><%= t ".name" %></th>
+				<th scope="col"><%= t ".quantity" %> </th>
+				<th scope="col"><%= t ".price" %></th>
+				<th scope="col"><%= t ".seller"%></th>
+			</tr>
+		</thead>
+		<tbody>
+		<% @cart.orders.each.with_index(1) do |orders, index| %>
+			<tr>
+				<td><%= index %></td>
+				<td><%= orders.product_name %></td>
+				<td><%= orders.quantity %></td>
+				<td><%= number_to_currency(orders.total_price) %></td>
+				<% if orders.product.user_id.nil? %>
+					<td>ZinZa Web</td>
+				<% else %>
+					<td><%= orders.product.user.name %></td>
+				<% end %>
+			</tr>
 		<% end %>
-			</tbody>
+		</tbody>
 		</table>
-		<center><p>Total: <strong><%=number_to_currency(@cart.total_price)%></strong></p></center>
-	</div>
+		<center><p style = "font-size: 20px;"><%= t ".total"%>: <strong><%=number_to_currency(@cart.total_price)%></strong></p></center>
 </div>
-<%= render "shared/footer" %>
+

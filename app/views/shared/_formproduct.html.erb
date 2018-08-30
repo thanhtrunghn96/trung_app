@@ -1,0 +1,12 @@
+<div class="col-lg-4 col-md-6 mb4">
+  <div class = "card-hd">
+    <%=  link_to image_tag(p.image_link_url),product_path(p) %>
+    <div class = "card-body">
+      <h3 class="card-title" style ="padding:0; margin:0 26px">
+        <%=link_to p.name, product_path(p), style: "text-decoration: none;color:black"%>
+      </h3>
+      <br>
+      <h4 style ="padding:0; margin:0 26px"><%=number_to_currency(p.price)%></h4>
+    </div>
+  </div>
+</div>

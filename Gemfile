@@ -9,7 +9,6 @@ ruby '2.5.1'
 gem 'rails', '~> 5.2.0'
 # Use mysql as the database for Active Record
 gem 'carrierwave', '~> 1.0'
-gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 # protect password
 gem 'activeadmin'
 gem 'bcrypt'
@@ -19,6 +18,7 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'draper'
 gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
+gem 'font-awesome-rails'
 gem 'haml-rails', '~> 1.0'
 gem 'jquery-rails'
 gem 'mini_magick'
@@ -27,7 +27,7 @@ gem 'rails-controller-testing'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'sprockets-rails', require: 'sprockets/railtie'
 gem 'whenever', require: false
-gem "font-awesome-rails"
+ gem 'pg'
 # debug
 gem 'pry'
 # pagination
@@ -77,6 +77,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 end
 
 group :test do
@@ -89,6 +90,8 @@ group :test do
   gem 'simplecov'
   gem 'simplecov-rcov'
 end
-
+group :production do
+ 
+end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

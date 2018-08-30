@@ -1,14 +1,13 @@
-<div class="container">
-	<div class="row">
-		<h1>Your Cart</h1>
-		<%= link_to 'Continue to buy', products_path, class: "btn btn-success", style: "margin-bottom: 10px"%>
-		</br>
+<div class="row" style = "margin-top: 76px;">
+	<h1><%= t".Your Cart"%></h1>
+	<%= link_to t(".Continue to buy"), localhost_path, class: "btn btn-success", style: "margin-bottom: 10px"%>
+	</br>
 	<table class=" table table-bordered table-hover" style="text-align:center">
 		<tr>
-			<th>Product</th>
-			<th>Quantity</th>
-			<th>Price</th>
-			<th>Remove</th>
+			<th><%= t".Product" %></th>
+			<th><%= t".Quantity" %></th>
+			<th><%= t".Price" %></th>
+			<th><%= t".Remove" %></th>
 		</tr>
 		<% @cart.orders.each do |orders| %>
 		<tr>
@@ -18,19 +17,18 @@
 			</td>
 			<td><%= orders.quantity %></td>
 			<td><%= number_to_currency(orders.total_price)%></td>
-			<td><%= button_to 'Remove Order',  order_path(orders),class: "btn btn-default",
+			<td><%= button_to t(".Remove Order"),  order_path(orders),class: "btn btn-default",
 			method: :delete,
 			data: { confirm: 'Are you sure?' }%></td>
 		</tr>
 		<% end %>
 		<tr>
-			<td colspan="2">Total</td>
+			<td colspan="2"><%= t".Total" %></td>
 			<td colspan="2"><%= number_to_currency(@cart.total_price) %></td>
 		</tr> 
 	</table>
 	<center>
-		<%= button_to 'Empty Cart', @cart, class: "btn btn-default", style: "float: right",:method => :delete,data: {:confirm => 'Are you sure?'} %>
-		<%= button_to 'Check Out',cart_checkout_path(@cart), method: :post,class: "btn btn-info", style: "float: right; margin-right: 16px" %>
+		<%= button_to t(".Empty Cart"), @cart, class: "btn btn-default", style: "float: right",:method => :delete,data: {:confirm => 'Are you sure?'} %>
+		<%= button_to t(".Check Out"),cart_checkout_path(@cart), method: :post,class: "btn btn-info", style: "float: right; margin-right: 16px" %>
 	</center>
-	</div>
 </div>

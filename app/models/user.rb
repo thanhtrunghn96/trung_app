@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   mount_uploader :avatar, AvatarUploader
   has_many :carts
+  has_many :products
   validates :name, presence: true
   validates :phone, uniqueness: true, presence: true
   validates :address, presence: true

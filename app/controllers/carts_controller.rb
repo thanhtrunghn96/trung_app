@@ -3,7 +3,8 @@
 class CartsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @cart = Cart.where(status: 'active').order(created_at: :desc)
+    @id = current_user.id
+    @cart = Cart.where(status: 'active', user_id: @id.to_s).order(created_at: :desc)
   end
 
   def checkout
@@ -12,12 +13,21 @@ class CartsController < ApplicationController
     @cart.update_attribute(:totalprice, @cart.total_price)
     session.delete 'cart_id'
     CartMailer.cart_email(@cart).deliver
-    redirect_to products_path
+    redirect_to localhost_path
   end
 
   def show
-    @cart = Cart.find_by(id: params[:id])
-    render 'shared/_404' if @cart.nil?
+    @cart1 = Cart.find_by(id: params[:id])
+    if @cart1.nil?
+      render 'shared/_404'
+    else
+      @check_user = @cart1.user_id
+      if @check_user == current_user.id
+        @cart = @cart1
+      else
+        render 'shared/_404'
+      end
+    end
   end
 
   def destroy
