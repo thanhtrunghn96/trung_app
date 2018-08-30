@@ -5,12 +5,12 @@ ActiveAdmin.register Cart do
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
   # permit_params :list, :of, :attributes, :on, :model
-  controller do |cart|
+  controller do |_cart|
     def show
       cart = Cart.find_by(id: params[:id])
       respond_to do |format|
         format.html
-        format.csv { send_data cart.orders.to_csv,filename: "details-#{Date.today}.csv"}
+        format.csv { send_data cart.orders.to_csv, filename: "details-#{Date.today}.csv" }
       end
     end
   end

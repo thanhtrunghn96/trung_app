@@ -1,0 +1,29 @@
+<div class="row"style ="margin-top: 124px;">
+	<h1><%= t ".shop sold"%></h1>
+	<table class="table table-striped" style="">
+		<thead>
+			<tr>
+				<th scope="col"><%= t ".buyer"%></th>
+				<th scope="col"><%= t ".items"%></th>
+				<th scope="col"><%= t ".quantity"%></th>
+				<th scope="col"><%= t ".price"%></th>
+				<th scope="col"><%= t ".date & time co"%></th>
+			</tr>
+		</thead>
+		<tbody>
+		<% current_user.products.each do |p| %>
+			<% p.orders.each do |o| %>
+				<tr>
+					<% unless o.cart.status == "notactive" %>
+						<td><%= o.cart.user.name %></td>
+						<td><%= o.product_name %></td>
+						<td><%= o.quantity %></td>
+						<td><%= number_to_currency(o.product_price * o.quantity) %></td>
+						<td><%= o.cart.updated_at %></td>
+					<%end%>
+				<% end %>
+				</tr>
+		<% end %>
+		</tbody>
+		</table>
+</div>

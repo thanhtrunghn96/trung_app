@@ -1,29 +1,27 @@
-<div class="row">
-  <h2 class="title1">Edit <%= resource_name.to_s.humanize %></h2>
-</div>
-<div class="row">
+<%# <%= resource_name.to_s.humanize %>
+  <h2 class="title1" style = "margin-top:100px"><%= t("Your Profile")%></h2>
   <div class="col-lg-offset-3 col-lg-6">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= devise_error_messages! %>
       <div class="form-group">
         <center><%= image_tag "#{@user.avatar}", class:"rounded1" %></br></center>
-        <%= f.label :avatar,'Avatar'%>
+        <%= f.label :avatar, t("Avatar")%>
         <%= f.file_field :avatar%>
       </div>
       <div class="form-group">
-        <%= f.label :name %><br />
+        <%= f.label :name, t("Name") %><br />
         <%= f.text_field :name, autofocus: true, class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= f.label :phone %><br />
+        <%= f.label :phone, t("Phone") %><br />
         <%= f.text_field :phone, autofocus: true, class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= f.label :address %><br />
+        <%= f.label :address, t("Address") %><br />
         <%= f.text_field :address, autofocus: true, class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= f.label :email %><br />
+        <%= f.label :email, t("Email") %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
       </div>
 
@@ -32,33 +30,32 @@
     <% end %>
 
     <div class="form-group">
-      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+      <%= f.label :password, t("Password") %> <i><%= t("lb")%></i><br />
       <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
        <% if @minimum_password_length %>
     <br />
-    <em><%= @minimum_password_length %> characters minimum</em>
+    <em><%= @minimum_password_length %> <%= t("ch")%></em>
     <% end %>
   </div>
 
   <div class="form-group">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation, t("Password confirmation") %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.label :current_password, t("Current password") %> <i><%= t("wn")%></i><br />
     <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Update", class: "btn btn-info" %>
+    <%= f.submit t("Update"), class: "btn btn-info" %>
   </div>
   <% end %>
 
   <h3>Cancel my account</h3>
 
-  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-info" %></p>
+  <p>Unhappy? <%= button_to t("Cancel my account"), registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-info" %></p>
 
-  <%= link_to "Back", :back %>
-</div>
+  <%= link_to t("Back"), :back %>
 </div>

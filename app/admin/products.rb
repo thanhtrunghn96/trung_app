@@ -14,11 +14,11 @@ ActiveAdmin.register Product do
     column :price do |product|
       number_to_currency product.price
     end
-    # column :image_link
-     column :image_link do |ad|
+    column 'Avatar', :image_link do |ad|
       image_tag ad.image_link.url, class: 'image_link_index'
-     end
-    column :content
+    end
+    column 'Description', :content
+    column 'Seller', :user
     column :created_at
     column :updated_at
     actions
@@ -31,17 +31,18 @@ ActiveAdmin.register Product do
       row :price do |product|
         number_to_currency product.price
       end
-      row :image_link do |ad|
+      row 'Avatar', :image_link do |ad|
         image_tag ad.image_link.url,  class: 'image_link_view'
       end
-      row :content
+      row 'Description', &:content
+      row 'Seller', &:user
       row :created_at
       row :updated_at
     end
     active_admin_comments
   end
 
-  permit_params :category_id, :name, :price, :content, :image_link
+  permit_params :category_id, :name, :price, :content, :image_link, :user_id # select column to dowload
 
   csv do
     column :id
@@ -50,6 +51,7 @@ ActiveAdmin.register Product do
     column :price
     column :image_link
     column :content
+    column :user_id
     column :created_at
     column :updated_at
   end

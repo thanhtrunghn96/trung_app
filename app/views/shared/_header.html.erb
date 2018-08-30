@@ -1,16 +1,22 @@
 <nav class="header">
 	<div class="container">
-		<%= link_to "ZinZa Project", products_path, class: "web-title" %>
+		<%= link_to "ZinZa Project", localhost_path, class: "web-title" %>
+		 <%= search_form_for(@q, url:localhost_path, class:"navbar-form navbar-left") do |f|    %>
+        <div class="form-group">
+          <%= f.search_field :name_or_price_cont, placeholder: 'Search', class: 'form-control' %>
+        </div>
+        <%# <%= f.submit 'Search', class: 'btn btn-default' %> 
+      <% end %>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
 				<% if user_signed_in? %>
-				<li><%= image_tag current_user.avatar_url, class:"rounded"%></li>
+				<li><%= image_tag current_user.avatar_url, class:"rounded", alt: "avatar"%></li>
 				<li><%= link_to current_user.email, edit_user_registration_path %></li>
-				<li><%= link_to "List Cart", carts_path %></li>
+				<li><%= link_to t("List Cart"), carts_path %></li>
 				<% else %>
-				<li><%= link_to "Log in", new_user_session_path %></li>
+				<li><%= link_to t("Log in"), new_user_session_path %></li>
 				<%end%>
-				<li><%= link_to "Log out", destroy_user_session_path, method: 'delete'%></li>
+				<li><%= link_to t("Log out"), destroy_user_session_path, method: 'delete'%></li>
 				<li><%= link_to "English", locale:"en" %></li>
 				<li><%= link_to "Vietnamese", locale:"vi" %></li>
 			</ul>

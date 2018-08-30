@@ -22,7 +22,16 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @category = Category.all
+    @category1 = Category.find_by(id: params[:id])
+    if @category1.nil?
+      render 'shared/_404' if @category1.nil?
+    else
+      @products = @category1.products.page(params[:page]).per(9)
+      render 'shared/_404' if @products.nil?
+    end
+  end
 
   def edit
     @category = Category.find_by(id: params[:id])

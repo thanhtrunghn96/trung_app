@@ -5,13 +5,24 @@ class OrdersController < ApplicationController
   # befor_action:set_order_item, only: [:destroy]
   before_action :authenticate_user!
   def index
-    @cart = Cart.find_by(id: params[:id])
-    render 'shared/_404' if @cart.nil?
+    @cart1 = Cart.find_by(id: params[:id])
+    if @cart1.nil?
+      render 'shared/_404'
+    else
+      @check_user = @cart1.user_id
+      if @check_user == current_user.id
+        @cart = @cart1
+      else
+        render 'shared/_404'
+      end
+    end
   end
 
   def show; end
 
   def new;  end
+
+  def sold; end
 
   def create
     @order = @cart.orders.find_by(product_id: params[:order][:product_id])
@@ -33,6 +44,6 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:quantity, :product_id)
+    params.require(:order).permit(:quantity, :product_id, :product_name, :product_price)
   end
 end

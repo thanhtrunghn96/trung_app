@@ -2,10 +2,9 @@
 
 class ProductsController < ApplicationController
   before_action :authenticate_user!
-
   def index
-    @search = Product.ransack(params[:q])
-    @products = @search.result.eager_load(:category).page params[:page]
+    @q = current_user.products.ransack(params[:q])
+    @products = @q.result.includes(:category).page(params[:page]).per(9)
   end
 
   def new
@@ -13,7 +12,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(product_params)
+    @product = current_user.products.build(product_params)
     if @product.save
       flash[:success] = 'Add a new product success'
       redirect_to products_path
@@ -24,13 +23,27 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @q = Product.ransack(params[:q])
     @product = Product.find_by(id: params[:id])
-    render 'shared/_404' if @product.nil?
+    if @product.nil?
+      render 'shared/_404'
+    else
+      @check_user = @product.user_id
+    end
   end
 
   def edit
-    @product = Product.find_by(id: params[:id])
-    render 'shared/_404' if @product.nil?
+    @product1 = Product.find_by(id: params[:id])
+    if @product1.nil?
+      render 'shared/_404'
+    else
+      @check_user = @product1.user_id
+      if @check_user == current_user.id
+        @product = @product1
+      else
+        render 'shared/_404'
+      end
+    end
   end
 
   def update

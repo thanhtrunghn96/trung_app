@@ -21,5 +21,5 @@
 
 # Learn more: http://github.com/javan/whenever
 every 1.day, at: '6:12 pm' do
-  runner "SystemMailer.system_email"
+  runner 'SystemMailer.system_email'
 end
