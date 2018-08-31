@@ -2,7 +2,6 @@
 
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
-
   def index
     @search = Category.ransack(params[:q])
     @category = @search.result(distinct: true).page params[:page]

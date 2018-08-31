@@ -42,7 +42,7 @@ ActiveAdmin.register Product do
     active_admin_comments
   end
 
-  permit_params :category_id, :name, :price, :content, :image_link, :user_id # select column to dowload
+  permit_params :category_id, :name, :price, :content, :image_link
 
   csv do
     column :id
@@ -69,7 +69,7 @@ ActiveAdmin.register Product do
     end
   end
   form do |f|
-    f.inputs 'New category' do
+    f.inputs 'New Product' do
       f.input :category
       f.input :name
       f.input :price

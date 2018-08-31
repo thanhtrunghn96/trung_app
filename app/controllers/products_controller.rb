@@ -3,8 +3,8 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @q = current_user.products.ransack(params[:q])
-    @products = @q.result.includes(:category).page(params[:page]).per(9)
+    @search = current_user.products.ransack(params[:search])
+    @products = @search.result.includes(:category).page(params[:page]).per(9)
   end
 
   def new
@@ -23,7 +23,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @q = Product.ransack(params[:q])
     @product = Product.find_by(id: params[:id])
     if @product.nil?
       render 'shared/_404'

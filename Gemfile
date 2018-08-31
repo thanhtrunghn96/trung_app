@@ -22,12 +22,12 @@ gem 'font-awesome-rails'
 gem 'haml-rails', '~> 1.0'
 gem 'jquery-rails'
 gem 'mini_magick'
+gem 'pg'
 gem 'pundit'
 gem 'rails-controller-testing'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'sprockets-rails', require: 'sprockets/railtie'
 gem 'whenever', require: false
- gem 'pg'
 # debug
 gem 'pry'
 # pagination
@@ -75,9 +75,9 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'mysql2', '>= 0.4.4', '< 0.6.0'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 end
 
 group :test do
@@ -91,7 +91,6 @@ group :test do
   gem 'simplecov-rcov'
 end
 group :production do
- 
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

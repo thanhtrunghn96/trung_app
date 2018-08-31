@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_account_update_params, if: :devise_controller?
   before_action :session_cart
   before_action :set_locale
+  before_action :search_product
 
   protected
 
@@ -36,5 +37,9 @@ class ApplicationController < ActionController::Base
 
   def default_url_options
     { locale: I18n.locale }
+  end
+
+  def search_product
+    @q = Product.ransack(params[:q])
   end
 end

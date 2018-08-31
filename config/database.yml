@@ -19,6 +19,7 @@ default: &default
 development:
   <<: *default
   database: trung_app_development
+  username: thanhtrunghn96
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
