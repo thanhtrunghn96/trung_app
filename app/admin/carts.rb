@@ -23,12 +23,15 @@ ActiveAdmin.register Cart do
     panel('Order details') do
       table_for(cart.orders) do
         column 'Product' do |f|
-          f.product.name
+          f.product
         end
         column 'Price' do |f|
           number_to_currency f.product.price
         end
         column 'Quantity', &:quantity
+        column 'Seller' do |f|
+          f.product.user
+        end
       end
     end
     text_node link_to('Download CSV', admin_cart_path(resource.id, format: :csv))

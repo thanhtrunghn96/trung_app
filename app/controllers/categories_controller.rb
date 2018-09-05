@@ -2,7 +2,7 @@
 
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
-
+  before_action :find_category_id, only: [:edit, :update, :destroy]
   def index
     @search = Category.ransack(params[:q])
     @category = @search.result(distinct: true).page params[:page]
@@ -35,14 +35,11 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    @category = Category.find_by(id: params[:id])
     render 'shared/_404' if @category.nil?
   end
 
   def update
-    @category = Category.find_by(id: params[:id])
     render 'shared/_404' if @category.nil?
-
     if @category.update(category_params)
       redirect_to categories_path
     else
@@ -51,7 +48,6 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    @category = Category.find_by(id: params[:id])
     @category.destroy
     redirect_to categories_path
   end
@@ -60,5 +56,9 @@ class CategoriesController < ApplicationController
 
   def category_params
     params.require(:category).permit(:name)
+  end
+
+  def find_category_id
+    @category = Category.find_by(id: params[:id])
   end
 end

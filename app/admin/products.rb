@@ -42,7 +42,7 @@ ActiveAdmin.register Product do
     active_admin_comments
   end
 
-  permit_params :category_id, :name, :price, :content, :image_link, :user_id # select column to dowload
+  permit_params :category_id, :name, :price, :content, :image_link
 
   csv do
     column :id
@@ -63,13 +63,15 @@ ActiveAdmin.register Product do
         flash[:success] = 'Add a new product success'
         redirect_to admin_products_path
       else
-        flash[:success] = 'Add a new failed'
+        flash[:danger] = 'Add a new failed'
         render :new
       end
     end
   end
+
   form do |f|
-    f.inputs 'New category' do
+    # TODO: check xem ben edit product co thay doi khong (co thay doi edit)
+    f.inputs 'New Product' do
       f.input :category
       f.input :name
       f.input :price

@@ -10,15 +10,15 @@
 		<div class="form-group">
 			<div class="col-lg-offset-10">
 				<%= form_for Order.new do |order|%>
-				<%= order.hidden_field :product_id, value: @product.id %>
-				<%= order.hidden_field :product_name, value: @product.name%>
-				<%= order.hidden_field :product_price, value: @product.price%>
-				<% if current_user.id == @check_user %>
-        <%= order.submit 'Add to Cart', class: "btn btn-primary disabled",:disabled => true %>
-				<% else %>
-				<%= order.submit 'Add to Cart', class: "btn btn-primary" %> 
-				<% end%>
-				<%= order.number_field :quantity, style: "width: 92px; height: 33px; margin-top: 9px;margin-left: 4px; text-align: center", value: 1, min: 1, class: "form-control" %>
+					<%= order.hidden_field :product_id, value: @product.id %>
+					<%= order.hidden_field :product_name, value: @product.name%>
+					<%= order.hidden_field :product_price, value: @product.price%>
+					<% if current_user.id == @check_user %>
+						<%= order.submit 'Add to Cart', class: "btn btn-primary disabled",:disabled => true %>
+					<% else %>
+						<%= order.submit 'Add to Cart', class: "btn btn-primary" %> 
+					<% end%>
+					<%= order.number_field :quantity, style: "width: 92px; height: 33px; margin-top: 9px;margin-left: 4px; text-align: center", value: 1, min: 1, class: "form-control" %>
 				<% end %> 
 			</div>
 		</div>

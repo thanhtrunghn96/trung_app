@@ -3,7 +3,7 @@
 class Product < ApplicationRecord
   has_many :orders
   belongs_to :category
-  belongs_to :user
+  belongs_to :user, optional: true
   before_destroy :check_if_has_order
   mount_uploader :image_link,  ImageLinkUploader
   validates :name, uniqueness: true, presence: true

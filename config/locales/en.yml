@@ -249,6 +249,9 @@ en:
   pages:
     index:
       Category: "Category"
+      Your Shop: "Your Shop"
+      All items: "All items"
+      Sold: "Sold"
   #header
   List Cart: "List Cart"
   Log in: "Log in"

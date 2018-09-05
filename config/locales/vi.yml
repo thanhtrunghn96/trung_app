@@ -201,6 +201,9 @@ vi:
   pages:
     index:
       Category: "Danh Mục"
+      Your Shop: "Cửa hàng của bạn"
+      All items: "Tất cả mặt hàng"
+      Sold: "Đã bán"
   #header
   List Cart: "Đơn hàng của bạn"
   Log in: "Đăng nhập"
