@@ -70,7 +70,6 @@ ActiveAdmin.register Product do
   end
 
   form do |f|
-    # TODO: check xem ben edit product co thay doi khong (co thay doi edit)
     f.inputs 'New Product' do
       f.input :category
       f.input :name

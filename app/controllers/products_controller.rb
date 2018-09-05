@@ -2,7 +2,7 @@
 
 class ProductsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_product_id, only: [:update, :show, :destroy]
+  before_action :find_product_id, only: [:update, :destroy, :edit]
   def index
     @search = current_user.products.ransack(params[:search])
     @products = @search.result.includes(:category).page(params[:page]).per(9)
@@ -24,6 +24,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @product = Product.find_by(id: params[:id])
     if @product.nil?
       render 'shared/_404'
     else
@@ -31,19 +32,9 @@ class ProductsController < ApplicationController
     end
   end
 
-  def edit
-    @product1 = Product.find_by(id: params[:id])
-    return render 'shared/_404' if @product1.nil?
-    @check_user = @product1.user_id
-    if @check_user == current_user.id
-      @product = @product1
-    else
-      render 'shared/_404'
-    end
-  end
+  def edit; end
 
   def update
-    return render 'shared/_404' if @product.nil?
     if @product.update(product_params)
       redirect_to products_path
     else
@@ -53,10 +44,6 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
-    respond_to do |format|
-      format.html { redirect_to products_path }
-      format.json { render }
-    end
   end
 
   private
@@ -66,6 +53,7 @@ class ProductsController < ApplicationController
   end
 
   def find_product_id
-    @product = Product.find_by(id: params[:id])
+    @product = current_user.products.find_by(id: params[:id])
+    render 'shared/_404' if @product.nil?
   end
 end

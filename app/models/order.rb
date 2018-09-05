@@ -10,14 +10,13 @@ class Order < ApplicationRecord
     product.name
   end
 
-  def product_price
+  def product_price_1
     product.price
   end
 
   def total_price
     # product.price * quantity
-    # TODO: cho nay co the bo self. Tim hieu ve y nghia cua self trong ruby/ model class
-    self.product_price * quantity
+    product_price * quantity
   end
   
   def self.to_csv
