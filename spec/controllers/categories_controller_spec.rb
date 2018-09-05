@@ -4,14 +4,17 @@ require 'rails_helper'
 
 RSpec.describe CategoriesController, type: :controller do
   let(:user) { FactoryBot.create(:user) }
-
+  let(:category) {FactoryBot.create(:category)}
   describe 'TEST CATEGORY' do
     before do
-      user.confirm
+      # user.confirm
       sign_in user
     end
     it 'Render category index' do
       get :index
+      # expect(current_path).to eq new_user_session_path
+      # expect(page).to redirect_to('/en/categories')
+      # expect(page).to have_current_path('/en/categories')
       expect(response).to render_template(:index)
     end
 

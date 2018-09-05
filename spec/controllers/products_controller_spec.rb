@@ -8,7 +8,7 @@ RSpec.describe ProductsController, type: :controller do
   let(:product) { FactoryBot.create(:product, category: category) }
   describe 'TEST PRODUCT' do
     before do
-      user.confirm
+    # user.confirm
       sign_in user
     end
     it 'Render product index' do

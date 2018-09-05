@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
-  let!(:category) { FactoryBot.create(:category, name: 'asus') } # "!"
+  let!(:category) { FactoryBot.create(:category, name: 'asus') } # "! fix cung"
 
   describe 'Validates' do
     it 'is valid with valid attributes' do

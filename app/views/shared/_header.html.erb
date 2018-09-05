@@ -10,11 +10,11 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
 				<% if user_signed_in? %>
-				<li><%= image_tag current_user.avatar_url, class:"rounded", alt: "avatar"%></li>
-				<li><%= link_to current_user.email, edit_user_registration_path %></li>
-				<li><%= link_to t("List Cart"), carts_path %></li>
+					<li><%= image_tag current_user.avatar_url, class:"rounded", alt: "avatar"%></li>
+					<li><%= link_to current_user.email, edit_user_registration_path %></li>
+					<li><%= link_to t("List Cart"), carts_path %></li>
 				<% else %>
-				<li><%= link_to t("Log in"), new_user_session_path %></li>
+					<li><%= link_to t("Log in"), new_user_session_path %></li>
 				<%end%>
 				<li><%= link_to t("Log out"), destroy_user_session_path, method: 'delete'%></li>
 				<li><%= link_to "English", locale:"en" %></li>

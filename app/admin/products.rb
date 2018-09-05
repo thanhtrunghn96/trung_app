@@ -63,12 +63,14 @@ ActiveAdmin.register Product do
         flash[:success] = 'Add a new product success'
         redirect_to admin_products_path
       else
-        flash[:success] = 'Add a new failed'
+        flash[:danger] = 'Add a new failed'
         render :new
       end
     end
   end
+
   form do |f|
+    # TODO: check xem ben edit product co thay doi khong (co thay doi edit)
     f.inputs 'New Product' do
       f.input :category
       f.input :name

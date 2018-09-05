@@ -42,6 +42,7 @@ ActiveAdmin.register Category do
       end
     end
   end
+
   form do |f|
     f.inputs 'New category' do
       f.input :name

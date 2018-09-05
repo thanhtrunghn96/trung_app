@@ -7,12 +7,12 @@
         <% end %>
       </div>
       <div class="panel panel-default">
-        <div class="panel-heading" style = "text-align:center">Your Shop</div>
+        <div class="panel-heading" style = "text-align:center"><%= t".Your Shop"%></div>
         <div class="panel-body">
-          <%= link_to 'All items',products_path, class: "link-sell" %>
+          <%= link_to t(".All items"),products_path, class: "link-sell" %>
         </div>
         <div class="panel-body">
-          <%= link_to 'Sold', user_sold_path, class: "link-sell" %>
+          <%= link_to t(".Sold"), user_sold_path, class: "link-sell" %>
         </div>
       </div>
     </div>
